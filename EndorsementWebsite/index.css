@@ -1,0 +1,158 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter&family=Josefin+Sans&display=swap');
+
+:root {
+    --background: #1B1924;
+    --white: #ffffff;
+    --black: #000000;
+    --inputFields: #444059;
+    --inputText: #8F8F8F;
+    --button: #28A9F1;
+    --buttonText: #04131C;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    background: var(--background);
+    text-align: center;
+    user-select: none;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    max-width: 320px;
+    margin: 30px auto;
+}
+
+img {
+    width: 90px;
+    height: 90px;
+    flex-shrink: 0;
+    margin: 50px auto 0;
+}
+
+h1, h2 , button{
+    color: var(--white);
+    font-family: Josefin Sans;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+h1 {
+    font-size: 25px;
+}
+
+h2 {
+    font-size: 20px;
+}
+
+p {
+    margin: 0px;
+}
+
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+textarea, button, .endorsement {
+    margin: 15px auto 0;
+    display: block;
+    border: none;
+}
+
+textarea, #fromUser, #toUser {
+    flex-shrink: 1;
+    background-color: var(--inputFields);
+    color: var(--inputText);
+    font-family: Inter;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin-bottom: 15px;
+    padding: 15px;
+    box-sizing: border-box;
+}
+
+textarea, button, #fromUser, #toUser {
+    border-radius: 8px;
+}
+
+textarea {
+    width: 100%;
+    height: 118px;
+    resize: none;
+}
+
+#adressing {
+    display: flex;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+#fromUser, #toUser {
+    padding: 15px;
+    margin: 0;
+    width: 50%; 
+    box-sizing: border-box;
+    border: none;
+    text-align: center;
+}
+
+#fromUser {
+    margin-right: 10px;
+}
+
+button {
+    width: 100%;
+    display: flex;
+    height: 50px;
+    align-items: center;
+    justify-content: center;
+    color: #04131C;
+    font-size: 22px;
+    background-color: var(--button);
+}
+
+.endorsement-card {
+    font-family: Inter;
+    background-color: var(--white);
+    color: var(--inputText);
+    padding: 10px;
+    margin: 10px auto;
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.endorsement-text {
+    font-size: 15px;
+    margin: 20px auto;
+    word-wrap: break-word;
+    color: var(--black);
+}
+
+.to-likes-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.from, .to {
+    color: var(--black);
+    color: #1B1924;
+    font-family: Inter;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
