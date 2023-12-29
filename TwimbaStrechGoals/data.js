@@ -1,4 +1,6 @@
-export const tweetsData = [   
+import { v4 as uuidv4 } from 'https://jspm.dev/uuid';
+
+export let tweetsData = [   
     {
         handle: `@TrollBot66756542 💎`,
         profilePic: `images/troll.jpg`,
@@ -27,8 +29,10 @@ export const tweetsData = [
                 likes: 0,
                 retweets: 0,
                 isHidden: true,
+                isReply: true,
                 isLiked: false,
                 isRetweeted: false,
+                uuid: '5b161eee-c0f5-4545-9c4b-8562944223ee',
             },
                   {
                 handle: `@ChuckNorris ✅`,
@@ -38,8 +42,10 @@ export const tweetsData = [
                 likes: 0,
                 retweets: 0,
                 isHidden: true,
+                isReply: true,
                 isLiked: false,
                 isRetweeted: false,
+                uuid: '6b161eee-c0f5-4545-9c4b-8562944223ee',
             },
         ],
         isHidden: true,
@@ -62,8 +68,10 @@ export const tweetsData = [
                 likes: 0,
                 retweets: 0,
                 isHidden: true,
+                isReply: true,
                 isLiked: false,
                 isRetweeted: false,
+                uuid: '64161eee-c0f5-4545-9c4b-8562944223ee',
             },
             {
                 handle: `@YummyCoder64`,
@@ -73,8 +81,10 @@ export const tweetsData = [
                 likes: 0,
                 retweets: 0,
                 isHidden: true,
+                isReply: true,
                 isLiked: false,
                 isRetweeted: false,
+                uuid: '12361eee-c0f5-4545-9c4b-8562944223ee',
             },
         ],
         isHidden: true,
@@ -83,3 +93,4 @@ export const tweetsData = [
         uuid: '8hy671sff-c0f5-4545-9c4b-1237gyys45',
     },     
 ]
+
