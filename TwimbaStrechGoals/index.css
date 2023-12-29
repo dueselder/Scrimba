@@ -118,6 +118,19 @@ button{
     line-height: 20px;
 }
 
+.inner-reply-area {
+    display: flex;
+    flex-direction: column;
+}
+
+.tweet-inner-reply {
+    display: 
+}
+
+.tweet-reply-btn{
+    
+}
+
 /* images */
 
 .profile-pic{
