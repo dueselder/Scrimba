@@ -62,6 +62,11 @@ function handleRetweetClick(tweetId){
 
 function handleReplyClick(replyId){
     document.getElementById(`replies-${replyId}`).classList.toggle('hidden')
+
+    const targetTweetObj = tweetsData.filter(function(tweet){
+        return tweet.uuid === replyId
+    })[0]
+    targetTweetObj.isHidden = !targetTweetObj.isHidden
 }
 
 function handleTweetBtnClick(){
@@ -174,7 +179,7 @@ function getFeedHtml(){
             </div>   
         </div>            
     </div>
-    <div class="hidden" id="replies-${tweet.uuid}">
+    <div class="${tweet.isHidden ? 'hidden' : ''}" id="replies-${tweet.uuid}">
         <div class="tweet-reply">
             <div class="tweet-input-area inner-reply-area">
                 <textarea placeholder="Tweet your reply" class="reply-input" id="reply-${tweet.uuid}"></textarea>
