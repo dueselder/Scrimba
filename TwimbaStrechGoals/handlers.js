@@ -2,24 +2,23 @@ import { tweetsData } from './data.js';
 import { v4 as uuidv4 } from 'https://jspm.dev/uuid';
 import { getFeedHtml } from './index.js';
 
-export function handleLikeClick(id, isReply = false){
+export function handleLikeClick(tweetId, isReply = false){
     let targetObj;
 
-    console.log('handleLikeClick called with id:', id, 'isReply:', isReply);
+    console.log('handleLikeClick called with id:', tweetId, 'isReply:', isReply);
 
     if (isReply === true) {
         tweetsData.forEach(tweet => {
-            const reply = tweet.replies.find(reply => reply.uuid === id);
+            const reply = tweet.replies.find(reply => reply.uuid === tweetId);
             if (reply) {
                 targetObj = reply;
             }
         });
     } else {
-        targetObj = tweetsData.find(tweet => tweet.uuid === id);
+        targetObj = tweetsData.find(tweet => tweet.uuid === tweetId);
     }
 
     if (!targetObj) {
-        console.log(targetObj)
         console.error('No tweet or reply found with the given id');
         return;
     }
@@ -33,21 +32,39 @@ export function handleLikeClick(id, isReply = false){
 
 
     targetObj.isLiked = !targetObj.isLiked;
+    localStorage.setItem('tweetsData', JSON.stringify(tweetsData));
     render();
 }
 
-export function handleRetweetClick(tweetId){
-    const targetTweetObj = tweetsData.filter(function(tweet){
-        return tweet.uuid === tweetId
-    })[0]
+export function handleRetweetClick(tweetId, isReply = false){
+    let targetObj;
+
+    console.log('handleLikeClick called with id:', tweetId, 'isReply:', isReply);
+
+    if (isReply === true) {
+        tweetsData.forEach(tweet => {
+            const reply = tweet.replies.find(reply => reply.uuid === tweetId);
+            if (reply) {
+                targetObj = reply;
+            }
+        });
+    } else {
+        targetObj = tweetsData.find(tweet => tweet.uuid === tweetId);
+    }
+
+    if (!targetObj) {
+        console.error('No tweet or reply found with the given id');
+        return;
+    }
     
-    if(targetTweetObj.isRetweeted){
-        targetTweetObj.retweets--
+    if(targetObj.isRetweeted){
+        targetObj.retweets--
     }
     else{
-        targetTweetObj.retweets++
+        targetObj.retweets++
     }
-    targetTweetObj.isRetweeted = !targetTweetObj.isRetweeted
+
+    targetObj.isRetweeted = !targetObj.isRetweeted
     localStorage.setItem('tweetsData', JSON.stringify(tweetsData));
     render() 
 }
@@ -59,8 +76,8 @@ export function handleReplyClick(replyId){
         return tweet.uuid === replyId
     })[0]
     targetTweetObj.isHidden = !targetTweetObj.isHidden
+
     localStorage.setItem('tweetsData', JSON.stringify(tweetsData));
-    console.log(tweetsData)
     render()
 }
 
@@ -79,6 +96,7 @@ export function handleTweetBtnClick(){
             isRetweeted: false,
             uuid: uuidv4()
         })
+    
     localStorage.setItem('tweetsData', JSON.stringify(tweetsData));
     render()
     tweetInput.value = ''

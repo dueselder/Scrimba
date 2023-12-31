@@ -2,11 +2,8 @@ import { tweetsData } from './data.js';
 import { v4 as uuidv4 } from 'https://jspm.dev/uuid';
 import { handleLikeClick, handleRetweetClick, handleReplyClick, handleTweetBtnClick, handleReplyBtnClick, render } from './handlers.js';
 
-/* Stretch Goal 1: Add the ability to reply to a specific tweet.
-- Adding the ability to like a reply.
-- Adding the ability to retweet a reply.
-- Adding the ability to reply to a reply.
-Stretch Goal 2: Save tweets, likes and retweets to local storage.
+
+/*
 Stretch Goal 3: Add the ability to delete a tweet.
 Stretch Goal 4: Add the ability to edit a tweet.
 Stretch Goal 5: Add the ability to upload an image with a tweet.
@@ -21,7 +18,10 @@ document.addEventListener('click', function(e){
        handleLikeClick(e.target.dataset.like, isReply) 
     }
     else if(e.target.dataset.retweet){
-        handleRetweetClick(e.target.dataset.retweet)
+        
+        const isReply = e.target.closest('.tweet-reply') !== null;
+        console.log(isReply)
+        handleRetweetClick(e.target.dataset.retweet, isReply)
     }
     else if(e.target.dataset.reply){
         handleReplyClick(e.target.dataset.reply)
@@ -56,9 +56,14 @@ export function getFeedHtml(){
         if(tweet.replies.length > 0){
             tweet.replies.forEach(function(reply){
                 let likeIconClass = '';
+                let retweetIconClass = '';
                 if (reply.isLiked){
                     likeIconClass = 'liked';
+                }   else if (reply.isRetweeted){
+                    console.log(reply, reply.isRetweeted)
+                    retweetIconClass = 'retweeted';
                 }
+
                 repliesHtml+=`
                 <div class="tweet-reply">
                     <div class="tweet-inner">

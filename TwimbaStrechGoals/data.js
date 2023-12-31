@@ -1,6 +1,6 @@
 import { v4 as uuidv4 } from 'https://jspm.dev/uuid';
 
-export let tweetsData = [   
+export let tweetsData = JSON.parse(localStorage.getItem('tweetsData')) || [   
     {
         handle: `@TrollBot66756542 💎`,
         profilePic: `images/troll.jpg`,
