@@ -1,3 +1,76 @@
+@import url('https://fonts.googleapis.com/css2?family=Smythe&display=swap');
+
+:root {
+    --black: #000;
+    --white: #fff;
+    --dark-gray: #3C3C3C;
+    --gray-accent1: #888;
+    --gray-accent2: #D2D2D2;
+    --gray-accent3: #DEDEDE;
+}
+
 body {
     margin: 0;
+    background-color: var(--whitecolor);
+    font-family: 'Smythe', sans-serif;
+    font-size: 16px;
+    width: 600px;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    border: 1px solid var(--black);
 } 
+
+header {
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    background-image: url(./public/images/ferks-guare-ke-zd-wf-yd-ow-unsplash-1.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    color: var(--white);
+}
+
+header h1 {
+    font-size: 2.5rem;
+    font-weight: 400;
+    margin: 0 50px;
+    padding: 0;
+    padding-top: 2rem;
+}
+
+header h2 {
+    font-size: 1.50rem;
+    font-weight: 400;
+    line-height: 1.5;
+    margin: 0 50px;
+    padding: 0;
+    padding-bottom: 2rem;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    font-weight: 400;
+    margin: 0 50px;
+    padding: 0;
+    padding-top: 2rem;
+}
+
+header h2 {
+    font-size: 1.50rem;
+    font-weight: 400;
+    line-height: 1.5;
+    margin: 0 50px;
+    padding: 0;
+    padding-bottom: 2rem;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    padding: 0 50px;
+}
+
