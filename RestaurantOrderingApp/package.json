@@ -1,6 +1,9 @@
 {
   "name": "project",
-  "dependencies": {},
+  "type": "module",
+  "dependencies": {
+    "uuid": "^9.0.1"
+  },
   "devDependencies": {
     "vite": "latest"
   },
