@@ -1,15 +1,11 @@
 import { menuArray } from './data.js';
 
-let cartItemHtml = '';
 let cartArray = [];
 let totalPriceValue = 0;
 const cart = document.getElementById('cart');
 const totalPrice = document.getElementById('total-price');
 const modal = document.getElementById('modal');
-const payButton = document.getElementById('pay-button');
 const cardHolderName = document.getElementById('card-holder-name');
-
-console.log(cardHolderName)
 
 // Event listeners
 document.addEventListener('click', (e) => {
@@ -71,6 +67,8 @@ function renderCart() {
 
     if(cartArray.length > 0) {
         cart.style.display = 'block';
+    } else {
+        cart.style.display = 'none';
     }
 }
 
@@ -89,6 +87,8 @@ function paymentSuccessful() {
     <div class="success">
             <h2>Thanks ${cardHolderName.value}! Your order is on its way!!</h2>
     </div>`
+    cartArray = [];
+    renderCart();
 }
 
 // Building the menu list
