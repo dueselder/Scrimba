@@ -1,5 +1,191 @@
+@font-face {
+    font-family: 'Source Sans Pro'; /* A name to be used later */
+    src: url('../fonts/SourceSansPro-Regular.ttf') format('truetype'); /* URL to font file */
+}
+
+* {
+    box-sizing: border-box;
+}
+
 html, 
 body {
     margin: 0;
     padding: 0;
+}
+
+nav {
+    border: 1px solid black;
+}
+
+
+
+/* =================
+Typography
+================= */
+
+nav ul {
+    list-style-type: none;
+    
+}
+
+nav li {
+    
+}
+
+nav li a {
+    font-family: 'Source Sans Pro';
+    text-decoration: none;
+    color: black;
+    font-size: 0.8rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+nav li a:hover {
+    color: #ff0000;
+}
+
+.article-featured-content {
+    color: white;
+    font-family: 'Source Sans Pro';
+    font-size: 1.5rem;
+}
+/* =================
+Layout
+================= */
+/* Upper area in flexbox, cards in grid */
+body {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+    
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    max-width: 1200px;
+    background-color: #f2f2f2;
+    margin: 0;
+    padding: 0;
+
+}
+
+
+/* navigation */
+
+nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 4rem;
+    
+
+    width: 100%;
+    background-color: white;
+    border-bottom: 1px solid black;
+}
+
+.nav-logo {
+    display: flex;
+    flex-direction: row;
+
+}
+
+nav img {
+    width: 2rem;
+    height: 2rem;
+    margin: 5px 5px 5px 20px;
+}
+
+nav ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+}
+
+nav li {
+    padding: 0.5rem 1rem;
+    margin: 0;
+}
+
+
+/* articles */
+
+.article-featured {
+    position: relative;
+}
+
+.article-featured-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    overflow: hidden; /* add this line */
+}
+
+.article-featured img {
+
+    max-width: 100%; /* Optional: adjust as per your requirement */
+}
+
+.article-featured-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    margin: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.blog-posts {
+    display: grid;
+    
+}
+
+.blog-post {
+    display: grid;
+    grid-template-areas: 
+        "image"
+        "date"
+        "title"
+        "excerpt";
+    grid-template-columns: 1fr;
+    auto-columns: 1fr;
+    auto-rows: 1fr;
+    grid-gap: 1rem;
+    padding: 1rem;
+    margin: 0;
+    overflow: hidden;
+}
+
+.blog-post img {
+    grid-area: image;
+    border: 1px solid black;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.blog-date {
+    grid-area: date;
+    border: 1px solid black;
+}
+
+.blog-title {
+    grid-area: title;
+    border: 1px solid black;
+}
+
+.blog-excerpt {
+    grid-area: excerpt;
+    border: 1px solid black;
 }

@@ -1,34 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
+    <link rel="stylesheet" href="<https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
+    <link rel="stylesheet" href="css/style.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Learning Journal</title>
 </head>
 <body>
     <header>
-        <h1>My Learning Journal</h1>
+        
         <nav>
+            <div class="nav-logo">
+                <img src="images/logo.png" alt="My Learning Journal">
+                <p>My Learning Journal</p>
+            </div>
             <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="journal.html">Journal</a></li>
-                <li><a href="about.html">About</a></li>
+                <li><a href="index.html">HOME</a></li>
+                <li><a href="about.html">ABOUT ME</a></li>
             </ul>
         </nav>
     </header>
     <main>
-        <h2>My Learning Journal</h2>
-        <p>My Learning Journal is a place where I can keep track of what I've learned in this class.</p>
-        <p>It's also a place where I can practice my HTML and CSS skills.</p>
-        <p>Here's a list of what I've learned so far:</p>
-        <ul>
-            <li>HTML</li>
-            <li>CSS</li>
-            <li>JavaScript</li>
-            <li>PHP</li>
-            <li>MySQL</li>
-        </ul>
+         <!-- Featured Blog Post -->
+        <article class="article-featured">
+            <div class=".article-featured-image">
+                <img src="images/article-image-hero.png" alt="Featured Blog Post">
+            </div>
+            <div class="article-featured-content">
+                <p>July 23, 2022</p>
+                <h1>My new journey as bootcamp student.</h1>
+                <p>After several months of learning in the Frontend Developer Career Path, 
+                    I've made the big jump over to the Bootcamp to get expert code reviews 
+                    of my Solo Projects projects and meet like-minded peers.</p>
+            </div>
+        </article>
+
+         <!-- Other Blog Posts -->
+        <div class="blog-posts">
+            <article class="blog-post">
+                <p class="blog-date">July 23, 2022</p>
+                <h2 class="blog-title">Blog one</h2>
+                <img src="./images/article-image-1.png" alt="Blog One">
+                <p class="blog-excerpt">Summary of the first blog post...</p>
+            </article>
+
+            <article class="blog-post">
+                <p>July 23, 2022</p>
+                <h2>Blog two</h2>
+                <img src="./images/article-image-2.png" alt="Blog Two">
+                <p>Summary of the second blog post...</p>
+            </article>
+
+            <article class="blog-post">
+                <p>July 23, 2022</p>
+                <h2>Blog three</h2>
+                <img src="./images/article-image-3.png" alt="Blog Three">
+                <p>Summary of the third blog post...</p>
+            </article>
+        </div>
+        <a href="">View More</a>
     </main>
     <footer>
         <p>&copy; 2020 My Learning Journal</p>
