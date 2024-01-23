@@ -7,39 +7,46 @@
     <link rel="stylesheet" href="index.css">
 </head>
 <body>
-    <header>
-        <h1>Color Scheme Generator</h1>
-        <div class="color-picker-header">
-            <label for="color-picker">Pick a color:</label>
-            <input type="color" id="color-picker" value="#ff0000">
-            <select id="mode" title="Select a mode">
-                <option value="monochrome">Monochrome</option>
-                <option value="monochrome-dark">Monochrome-dark</option>
-                <option value="monochrome-light">Monochrome-light</option>
-                <option value="analogic">Analogic</option>
-                <option value="complement">Complement</option>
-                <option value="analogic-complement">Analogic-complement</option>
-                <option value="triad">Triad</option>
-            </select>
-            <button id="get-color-scheme">Get color scheme</button>
-        </div>
-    </header>
-    <main>
-        <div class="color-scheme">
-            <div id="color-1" class="color"></div>
-            <div id="color-2" class="color"></div>
-            <div id="color-3" class="color"></div>
-            <div id="color-4" class="color"></div>
-            <div id="color-5" class="color"></div>
-        </div>
-        <div class="color-scheme-values">   
-            <div id="color-1-value" class="color-value"></div>
-            <div id="color-2-value" class="color-value"></div>
-            <div id="color-3-value" class="color-value"></div>
-            <div id="color-4-value" class="color-value"></div>
-            <div id="color-5-value" class="color-value"></div>
-        </div>
-    </main>
+    <div class="container">
+        <header>
+            <div class="color-picker-header">
+                <label for="color-picker">Pick a color:</label>
+                <input type="color" id="color-picker" value="#ff0000">
+                <select id="mode" title="Select a mode">
+                    <option value="monochrome">Monochrome</option>
+                    <option value="monochrome-dark">Monochrome-dark</option>
+                    <option value="monochrome-light">Monochrome-light</option>
+                    <option value="analogic">Analogic</option>
+                    <option value="complement">Complement</option>
+                    <option value="analogic-complement">Analogic-complement</option>
+                    <option value="triad">Triad</option>
+                </select>
+                <button id="get-color-scheme">Get color scheme</button>
+            </div>
+        </header>
+        <main>
+            <div class="color-scheme-1">
+                <div id="color-1" class="color"></div>
+                <div id="color-1-value" class="color-value"></div>
+            </div>
+            <div class="color-scheme-2">
+                <div id="color-2" class="color"></div>
+                <div id="color-2-value" class="color-value"></div>
+            </div>
+            <div class="color-scheme-3">
+                <div id="color-3" class="color"></div>
+                <div id="color-3-value" class="color-value"></div>
+            </div>
+            <div class="color-scheme-4">
+                <div id="color-4" class="color"></div>
+                <div id="color-4-value" class="color-value"></div>
+            </div>
+            <div class="color-scheme-5">
+                <div id="color-5" class="color"></div>
+                <div id="color-5-value" class="color-value"></div>
+            </div>
+        </main>
+    </div>
     <script src="index.js"></script>
 </body>
 </html>
