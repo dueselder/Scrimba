@@ -1,0 +1,10 @@
+body {
+    padding: 0;
+    margin: 0 auto;
+    background-color: #121212;
+    color: #fff;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+    max-width: 550px;
+}
+
