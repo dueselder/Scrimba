@@ -18,7 +18,6 @@ searchInput.addEventListener('keyup', function(event) {
     }
 });
 
-
 async function getMovieData() {
     console.log(searchInput.value, "searchInput.value from getMovieData()")
     const response = await fetch(`http://www.omdbapi.com/?apikey=cd39d31c&s=${searchInput.value}&type=movie`);
@@ -35,7 +34,9 @@ async function getMovieDetailData(id) {
 }
 
 async function renderMovieData() {
+    movieList.innerHTML = '<p>Loading...</p>';
     const movieData = await getMovieData();
+    movieList.innerHTML = '';
     movieData.forEach(movie => {
         movieList.innerHTML += `
         <div class="card">
@@ -62,7 +63,7 @@ async function renderMovieData() {
 
 
 function handleSearchClick() {
-    movieList.innerHTML = '';
+    
     renderMovieData();
     searchInput.value = '';
 }
