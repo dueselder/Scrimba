@@ -1,10 +1,18 @@
 const searchBtn = document.getElementById('search-button');
 const searchInput = document.getElementById('search-input');
 const movieList = document.getElementById('movie-list');
+const searchBtn = document.getElementById('search-button');
+const searchInput = document.getElementById('search-input');
+const movieList = document.getElementById('movie-list');
 async function getMovieData() {
     console.log(searchInput.value, "searchInput.value from getMovieData()")
     const response = await fetch(`http://www.omdbapi.com/?apikey=cd39d31c&s=${searchInput.value}`);
+    console.log(searchInput.value, "searchInput.value from getMovieData()")
+    const response = await fetch(`http://www.omdbapi.com/?apikey=cd39d31c&s=${searchInput.value}`);
     const data = await response.json();
+    const movieData = await Promise.all(data.Search.map(movie => getMovieDetailData(movie.imdbID)));
+    console.log(movieData, "movieData from getMovieData()")
+    return movieData;
     const movieData = await Promise.all(data.Search.map(movie => getMovieDetailData(movie.imdbID)));
     console.log(movieData, "movieData from getMovieData()")
     return movieData;
