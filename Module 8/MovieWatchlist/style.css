@@ -2,76 +2,62 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
 /* CSS reset */
-
-/* Box sizing rules */
 *,
 *::before,
 *::after {
   box-sizing: border-box;
 }
 
-/* Prevent font size inflation */
 html {
   -moz-text-size-adjust: none;
   -webkit-text-size-adjust: none;
   text-size-adjust: none;
 }
 
-/* Remove default margin in favour of better control in authored CSS */
 body, h1, h2, h3, h4, p,
 figure, blockquote, dl, dd {
   margin-block-end: 0;
 }
 
-/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
 ul[role='list'],
 ol[role='list'] {
   list-style: none;
 }
 
-/* Set core body defaults */
 body {
   min-height: 100svh;
   line-height: 1.5;
 }
 
-/* Set shorter line heights on headings and interactive elements */
 h1, h2, h3, h4,
 button, input, label {
   line-height: 1.1;
 }
 
-/* Balance text wrapping on headings */
 h1, h2,
 h3, h4 {
   text-wrap: balance;
 }
 
-/* A elements that don't have a class get default styles */
 a:not([class]) {
   text-decoration-skip-ink: auto;
   color: currentColor;
 }
 
-/* Make images easier to work with */
-img,
-picture {
+img, picture {
   max-width: 100%;
   display: block;
 }
 
-/* Inherit fonts for inputs and buttons */
 input, button,
 textarea, select {
   font: inherit;
 }
 
-/* Make sure textareas without a rows attribute are not tiny */
 textarea:not([rows]) {
   min-height: 10em;
 }
 
-/* Anything that has been anchored to should have extra scroll margin */
 :target {
   scroll-margin-block: 5ex;
 }
@@ -81,7 +67,6 @@ body {
   background-color: #121212;
   color: #fff;
   font-family: 'Inter', sans-serif;
-  border: 1px solid #fff;
   margin: 0 auto;
 }
 
@@ -109,7 +94,9 @@ p {
 #watch-list-button:hover,
 #search-button:hover,
 #watch-list-button:active,
-#search-button:active {
+#search-button:active,
+#explore-button:hover,
+#explore-button:active {
   text-shadow: 2px 2px 5px white;
 }
 
@@ -123,6 +110,16 @@ p {
   text-align: center;
   font-size: 1.125rem;
   font-weight: 700;
+}
+
+#empty-watchlist {
+  color: #787878;
+  text-align: center;
+  font-family: Inter;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+  margin-bottom: 1rem;
 }
 
 /* Layout */
@@ -148,33 +145,34 @@ nav {
   display: flex;
   justify-content: center;
   position: relative;
-  top: 1rem;
-  margin-top: -1.5rem;
+  top: 1.5rem;
+  margin-top: -2.7rem;
 }
 
-main,
-#empty-list {
+main {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 #empty-list {
+  display: flex;
   flex-direction: column;
-  margin-top: 50%;
-  flex: 1;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10rem;
 }
 
 #movie-list {
-  max-width: 550px; 
+  max-width: 34.375rem;
   overflow: hidden;
   flex-shrink: 0;
+  margin-top: 2rem;
 }
 
 .card {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)) minmax(75px, 1fr) minmax(175px, 2fr) minmax(125px, 2fr);
-  
   grid-template-areas: "cover title title title "
                        "cover runtime genre add-watchlist"
                        "cover plot plot plot";
@@ -182,6 +180,7 @@ main,
   margin: 0 10px;
   padding: 2rem 0;
   border-bottom: 1px solid #2C2C2C;
+  align-items: center;
 }
 
 .card > * {
@@ -193,58 +192,48 @@ main,
   grid-area: cover;
   width: 100%;
   object-fit: cover;
+}
 
+.card-title,
+.card-rating,
+.card-runtime,
+.card-genre,
+.card-plot,
+.card-add-watchlist {
+  font-family: Inter;
+  font-style: normal;
+  margin: 0;
 }
 
 .card-title {
   grid-area: title;
   color: #FFF;
-  font-family: Inter;
   font-size: 18px;
-  font-style: normal;
   font-weight: 500;
 }
 
 .card-rating {
   grid-area: title;
   color: #FFF;
-  font-family: Inter;
-  font-size: 12px; 
-  font-style: normal;
+  font-size: 12px;
   font-weight: 400;
 }
 
-.card-runtime {
-  grid-area: runtime;
-  font-family: Inter;
+.card-runtime,
+.card-genre,
+.card-plot {
   font-size: 12px;
-  font-style: normal;
-  font-weight: 400;
-}
-
-.card-genre {
-  grid-area: genre;
-  font-family: Inter;
-  font-size: 12px;
-  font-style: normal;
   font-weight: 400;
 }
 
 .card-plot {
   grid-area: plot;
   color: #A5A5A5;
-  font-family: Inter;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 400;
-  
 }
 
 .card-add-watchlist {
   grid-area: add-watchlist;
-  font-family: Inter;
   font-size: 12px;
-  font-style: normal;
   font-weight: 400;
   text-decoration: none;
   color: #FFF;
@@ -253,14 +242,17 @@ main,
   justify-content: center;
 }
 
+.card-add-watchlist svg {
+  margin-right: 0.3rem;
+}
 
 /* Search input and button styles */
 #search-input {
   border-radius: 0.5rem 0 0 0.5rem;
   background-color: #2E2E2F;
   border: none;
-  padding: 0.5rem 1rem;
-  padding-right: 7rem;
+  padding: 0.5rem 0 0.7rem 1rem;
+  width: 70%;
 }
 
 #search-input:focus {
@@ -275,5 +267,16 @@ main,
   border: none;
   padding: 0.5rem 1rem;
   cursor: pointer;
-  padding: 0 2rem;
+}
+
+#explore-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+#explore-button:focus {
+  outline: none;
+  color: #fff;
 }
