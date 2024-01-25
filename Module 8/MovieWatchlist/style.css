@@ -1,4 +1,7 @@
-// CSS reset
+/* Import fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+/* CSS reset */
 
 /* Box sizing rules */
 *,
@@ -78,7 +81,6 @@ body {
   background-color: #121212;
   color: #fff;
   font-family: 'Inter', sans-serif;
-  max-width: 550px;
   border: 1px solid #fff;
   margin: 0 auto;
 }
@@ -171,25 +173,27 @@ main,
 
 .card {
   display: grid;
-  grid-template-columns: 150px 1fr 2fr 2fr;
-  grid-template-rows: 1fr 1fr 4fr;
-  grid-template-areas: "cover title title rating "
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)) minmax(75px, 1fr) minmax(175px, 2fr) minmax(125px, 2fr);
+  
+  grid-template-areas: "cover title title title "
                        "cover runtime genre add-watchlist"
                        "cover plot plot plot";
-  gap: 0.7rem;
-  margin: 1rem;
+  gap: 0.9rem;
+  margin: 0 10px;
   padding: 2rem 0;
-  border-bottom: 1px solid #fff;
-  height: 220px;
+  border-bottom: 1px solid #2C2C2C;
 }
 
 .card > * {
   margin: 0;
+  overflow: hidden;
 }
 
 .card-img-top {
   grid-area: cover;
   width: 100%;
+  object-fit: cover;
+
 }
 
 .card-title {
@@ -199,11 +203,15 @@ main,
   font-size: 18px;
   font-style: normal;
   font-weight: 500;
-  margin: 0;
 }
 
 .card-rating {
-  grid-area: rating;
+  grid-area: title;
+  color: #FFF;
+  font-family: Inter;
+  font-size: 12px; 
+  font-style: normal;
+  font-weight: 400;
 }
 
 .card-runtime {
@@ -229,6 +237,7 @@ main,
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
+  
 }
 
 .card-add-watchlist {
@@ -239,7 +248,9 @@ main,
   font-weight: 400;
   text-decoration: none;
   color: #FFF;
-  
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 
