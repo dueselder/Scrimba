@@ -104,7 +104,7 @@ async function renderMovieData() {
 }
 
 function handleSearchClick() {
-    if{searchInput.value === ''} {
+    if(searchInput.value === '') {
         return;
     } else {
         renderMovieData();
