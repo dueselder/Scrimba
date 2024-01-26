@@ -96,7 +96,9 @@ p {
 #watch-list-button:active,
 #search-button:active,
 #explore-button:hover,
-#explore-button:active {
+#explore-button:active
+#close-message-btn:hover,
+#close-message-btn:active {
   text-shadow: 2px 2px 5px white;
 }
 
@@ -282,6 +284,45 @@ main {
   color: #fff;
 }
 
+#close-message-btn {
+  color: #fff;
+  background-color: #2E2E2F;
+  border: none;
+  padding: 0.5rem 2rem;
+}
+
+#close-message-btn:hover {
+  cursor: pointer;
+  background-color: #4B4B4B;
+}
+
+/* message box */
+
+#message-box {
+  display: flex;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #2E2E2F;
+  padding: 20px;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.5s ease-in-out;
+}
+
+#message-content {
+  margin: 0;
+}
+
+.hidden {
+  opacity: 0;
+}
+
+.visible {
+  opacity: 1;
+}
 
 /* Media Query for screens with a width up to 550px */
 @media screen and (max-width: 550px) {
@@ -316,4 +357,9 @@ main {
   .card-add-watchlist {
     font-size: 1rem; /* Adjust the font size as needed */
   }
+
+  #message-content {
+    font-size: 0.875rem;
+  }
+
 }

@@ -1,11 +1,14 @@
 const searchBtn = document.getElementById('search-button');
 const searchInput = document.getElementById('search-input');
 const movieList = document.getElementById('movie-list');
+const messageBox = document.getElementById('message-box');
+const closeMessageBtn = document.getElementById('close-message-btn');
 
 document.addEventListener('click', (e) => {
     if (e.target.dataset.add) {
         e.preventDefault();
         console.log(e.target.dataset.add)
+        showMessage(e.target.dataset.name, 'add');
     } else if (e.target.dataset.remove) {
         console.log(e.target.dataset.remove)
     }
@@ -18,6 +21,30 @@ searchInput.addEventListener('keyup', function(event) {
     }
 });
 
+function showMessage(title, method) {
+    messageBox.classList.remove('hidden');
+    messageBox.classList.add('visible');
+
+    if(method === 'add') {
+        document.getElementById('message-content').innerHTML = `<strong>${title}</strong> has been added to your watchlist!`;
+    } else if (method === 'remove') {
+        document.getElementById('message-content').innerHTML = `<strong>${title}</strong> has been removed from your watchlist!`;
+    }
+
+    messageBox.style.display = 'flex';
+
+    // hiding the message box with fade-out animation
+    setTimeout(() => {
+        messageBox.style.opacity = '0';
+        setTimeout(() => {
+            messageBox.style.display = 'none';
+            messageBox.style.opacity = '1';
+        }, 500);
+    }, 1500);
+}
+
+
+// Fetch functions
 async function getMovieData() {
     console.log(searchInput.value, "searchInput.value from getMovieData()")
     const response = await fetch(`http://www.omdbapi.com/?apikey=cd39d31c&s=${searchInput.value}&type=movie`);
@@ -49,7 +76,7 @@ async function renderMovieData() {
             </h5> 
             <p class="card-runtime">${movie.Runtime}</p>
             <p class="card-genre">${movie.Genre}</p>
-            <a href="#" class="card-add-watchlist" data-add="${movie.imdbID}">
+            <a href="#" class="card-add-watchlist" data-add="${movie.imdbID}" data-name="${movie.Title}">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none" style="pointer-events: none;">
                     <path fill-rule="evenodd" clip-rule="evenodd" d="M8 16C12.4183 16 16 12.4183 16 8C16 3.58172 12.4183 0 8 0C3.58172 0 0 3.58172 0 8C0 12.4183 3.58172 16 8 16ZM9 5C9 4.44772 8.55228 4 8 4C7.44772 4 7 4.44772 7 5V7H5C4.44772 7 4 7.44771 4 8C4 8.55228 4.44772 9 5 9H7V11C7 11.5523 7.44772 12 8 12C8.55228 12 9 11.5523 9 11V9H11C11.5523 9 12 8.55228 12 8C12 7.44772 11.5523 7 11 7H9V5Z" fill="white"/>
                 </svg>
@@ -69,6 +96,9 @@ function handleSearchClick() {
 }
 
 searchBtn.addEventListener('click', handleSearchClick);
+closeMessageBtn.addEventListener('click', () => {
+    document.getElementById('message-box').style.display = 'none';
+});
 
 
 
