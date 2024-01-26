@@ -4,10 +4,12 @@ const movieList = document.getElementById('movie-list');
 const messageBox = document.getElementById('message-box');
 const closeMessageBtn = document.getElementById('close-message-btn');
 
+
 document.addEventListener('click', (e) => {
     if (e.target.dataset.add) {
         e.preventDefault();
         console.log(e.target.dataset.add)
+        addToWatchlist(e.target.dataset.add)
         showMessage(e.target.dataset.name, 'add');
     } else if (e.target.dataset.remove) {
         console.log(e.target.dataset.remove)
@@ -20,6 +22,8 @@ searchInput.addEventListener('keyup', function(event) {
         handleSearchClick();
     }
 });
+
+searchBtn.addEventListener('click', handleSearchClick);
 
 function showMessage(title, method) {
     messageBox.classList.remove('hidden');
@@ -46,11 +50,9 @@ function showMessage(title, method) {
 
 // Fetch functions
 async function getMovieData() {
-    console.log(searchInput.value, "searchInput.value from getMovieData()")
     const response = await fetch(`http://www.omdbapi.com/?apikey=cd39d31c&s=${searchInput.value}&type=movie`);
     const data = await response.json();
     const movieData = await Promise.all(data.Search.map(movie => getMovieDetailData(movie.imdbID)));
-    console.log(movieData, "movieData from getMovieData()")
     return movieData;
 }
 
@@ -58,6 +60,19 @@ async function getMovieDetailData(id) {
     const movieDetailResponse = await fetch(`http://www.omdbapi.com/?apikey=cd39d31c&i=${id}&plot=short`);
     const movieDetailData = await movieDetailResponse.json();
     return movieDetailData;
+}
+
+async function addToWatchlist(id) {
+    const watchlist = localStorage.getItem('watchlist') ? JSON.parse(localStorage.getItem('watchlist')) : [];
+    const newMovie = await getMovieDetailData(id);
+    const existingMovieIndex = watchlist.findIndex(movie => id === movie.imdbID);
+
+    if (existingMovieIndex !== -1) {
+        watchlist[existingMovieIndex] = newMovie;
+    }   else {
+        watchlist.push(newMovie);
+    }
+    localStorage.setItem('watchlist', JSON.stringify(watchlist));
 }
 
 async function renderMovieData() {
@@ -88,54 +103,11 @@ async function renderMovieData() {
     })
 }
 
-
 function handleSearchClick() {
-    
-    renderMovieData();
-    searchInput.value = '';
+    if{searchInput.value === ''} {
+        return;
+    } else {
+        renderMovieData();
+        searchInput.value = '';
+    }
 }
-
-searchBtn.addEventListener('click', handleSearchClick);
-closeMessageBtn.addEventListener('click', () => {
-    document.getElementById('message-box').style.display = 'none';
-});
-
-
-
-
-
-
-
-/*
-{
-  Title: 'The Avengers',
-  Year: '2012',
-  Rated: 'PG-13',
-  Released: '04 May 2012',
-  Runtime: '143 min',
-  Genre: 'Action, Sci-Fi',
-  Director: 'Joss Whedon',
-  Writer: 'Joss Whedon, Zak Penn',
-  Actors: 'Robert Downey Jr., Chris Evans, Scarlett Johansson',
-  Plot: "Earth's mightiest heroes must come together and learn to fight as a team if they are going to stop the mischievous Loki and his alien army from enslaving humanity.",
-  Language: 'English, Russian',
-  Country: 'United States',
-  Awards: 'Nominated for 1 Oscar. 38 wins & 81 nominations total',
-  Poster: 'https://m.media-amazon.com/images/M/MV5BNDYxNjQyMjAtNTdiOS00NGYwLWFmNTAtNThmYjU5ZGI2YTI1XkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_SX300.jpg',
-  Ratings: [
-    { Source: 'Internet Movie Database', Value: '8.0/10' },
-    { Source: 'Rotten Tomatoes', Value: '91%' },
-    { Source: 'Metacritic', Value: '69/100' }
-  ],
-  Metascore: '69',
-  imdbRating: '8.0',
-  imdbVotes: '1,445,496',
-  imdbID: 'tt0848228',
-  Type: 'movie',
-  DVD: '22 Jun 2014',
-  BoxOffice: '$623,357,910',
-  Production: 'N/A',
-  Website: 'N/A',
-  Response: 'True'
-}
-*/
