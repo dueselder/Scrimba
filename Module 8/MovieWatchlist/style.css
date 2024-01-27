@@ -326,7 +326,17 @@ main {
 
 /* Media Query for screens with a width up to 550px */
 @media screen and (max-width: 550px) {
-  
+  nav {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #watch-list-button {
+    background-color: #2E2E2F;
+    border: 1px solid #2E2E2F;
+    border-radius: 1rem;
+    padding: 0.5rem 1rem;
+  }
 
   #movie-list {
     max-width: 100%;

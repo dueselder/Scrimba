@@ -1,3 +1,5 @@
+import { showMessage } from './utility.js';
+
 document.addEventListener('DOMContentLoaded', () => {
     renderWatchlist();
 })
@@ -6,6 +8,7 @@ document.addEventListener('click', (e) => {
     if (e.target.dataset.remove) {
         e.preventDefault();
         removeFromWatchlist(e.target.dataset.remove)
+        showMessage(e.target.dataset.name, 'remove');
     }
 })
 
@@ -17,7 +20,7 @@ function renderWatchlist () {
         renderMovies(watchlistData)
     } catch (error) {
         console.log('Error parsing watchlist data', error)
-        document.getElementById('watchlist').innerHTML = '<p>Error loading watchlist data</p>'
+        document.getElementById('movie-list').innerHTML = '<p>Error loading watchlist data</p>'
     }
 }
 
