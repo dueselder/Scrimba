@@ -14,9 +14,7 @@ document.addEventListener('click', (e) => {
         console.log(e.target.dataset.add)
         addToWatchlist(e.target.dataset.add)
         showMessage(e.target.dataset.name, 'add');
-    } else if (e.target.dataset.remove) {
-        console.log(e.target.dataset.remove)
-    }
+    } 
 });
 
 searchInput.addEventListener('keyup', function(event) {

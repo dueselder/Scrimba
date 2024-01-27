@@ -2,6 +2,13 @@ document.addEventListener('DOMContentLoaded', () => {
     renderWatchlist();
 })
 
+document.addEventListener('click', (e) => {
+    if (e.target.dataset.remove) {
+        console.log(e.target.dataset.remove)
+        removeFromWatchlist(e.target.dataset.remove)
+    }
+})
+
 function renderWatchlist () {
     const watchlist = localStorage.getItem('watchlist') 
 
@@ -37,4 +44,15 @@ function renderMovies (movieData) {
         </figure>
         `
     ).join('')
+}
+
+function removeFromWatchlist (id) {
+    const watchlist = localStorage.getItem('watchlist') ? JSON.parse(localStorage.getItem('watchlist')) : [];
+    const existingMovieIndex = watchlist.findIndex(movie => id === movie.imdbID)
+
+    if (existingMovieIndex !== -1) {
+        watchlist.splice(existingMovieIndex, 1)
+    }
+    localStorage.setItem('watchlist', JSON.stringify(watchlist))
+    renderWatchlist()
 }
