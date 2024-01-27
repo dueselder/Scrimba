@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 document.addEventListener('click', (e) => {
     if (e.target.dataset.remove) {
-        console.log(e.target.dataset.remove)
+        e.preventDefault();
         removeFromWatchlist(e.target.dataset.remove)
     }
 })
